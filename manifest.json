@@ -1,6 +1,7 @@
 {
-  "name": "Active Sefton",
+  "name": "Active Sefton Launcher",
   "short_name": "Active Sefton",
+  "description": "Quick access launcher for Active Sefton services",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#0b8457",
@@ -20,5 +21,6 @@
     }
   ],
   "scope": "/",
-  "orientation": "portrait-primary"
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "productivity"]
 }
