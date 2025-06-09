@@ -22,16 +22,60 @@
             background-color: #0b8457;
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            max-width: 400px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
         
         .loading {
             font-size: 18px;
+            margin-bottom: 20px;
             animation: pulse 1.5s ease-in-out infinite alternate;
+        }
+        
+        .install-prompt {
+            font-size: 14px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .button {
+            background-color: white;
+            color: #0b8457;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .button:hover {
+            transform: scale(1.05);
+        }
+        
+        .countdown {
+            font-size: 14px;
+            margin-top: 20px;
+            opacity: 0.8;
         }
         
         @keyframes pulse {
@@ -41,13 +85,78 @@
     </style>
 </head>
 <body>
-    <div class="loading">
-        Redirecting to Active Sefton...
+    <div class="container">
+        <div class="logo">Active Sefton</div>
+        <div class="loading" id="loading">Redirecting to Active Sefton...</div>
+        
+        <div class="install-prompt" id="installPrompt" style="display: none;">
+            <strong>Install this app to your home screen!</strong><br>
+            Tap your browser's menu and select "Add to Home Screen" or "Install App"
+        </div>
+        
+        <button class="button" id="goButton" onclick="goToSite()" style="display: none;">
+            Go to Active Sefton
+        </button>
+        
+        <button class="button" id="installButton" onclick="showInstallInstructions()" style="display: none;">
+            Install App
+        </button>
+        
+        <div class="countdown" id="countdown"></div>
     </div>
     
     <script>
-        // Immediate redirect to the target URL
-        window.location.href = "https://activesefton.gladstonego.cloud/site-finder";
+        let countdownTimer;
+        let secondsLeft = 5;
+        
+        // Check if this is running as a PWA
+        function isPWA() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   window.navigator.standalone === true;
+        }
+        
+        // Go to the Active Sefton site
+        function goToSite() {
+            window.location.href = "https://activesefton.gladstonego.cloud/site-finder";
+        }
+        
+        // Show install instructions
+        function showInstallInstructions() {
+            document.getElementById('installPrompt').style.display = 'block';
+            document.getElementById('installButton').style.display = 'none';
+            clearTimeout(countdownTimer);
+            document.getElementById('countdown').textContent = '';
+        }
+        
+        // Update countdown display
+        function updateCountdown() {
+            if (secondsLeft > 0) {
+                document.getElementById('countdown').textContent = `Redirecting in ${secondsLeft} seconds...`;
+                secondsLeft--;
+                countdownTimer = setTimeout(updateCountdown, 1000);
+            } else {
+                goToSite();
+            }
+        }
+        
+        // Initialize the app
+        function init() {
+            if (isPWA()) {
+                // If running as PWA, redirect immediately
+                goToSite();
+            } else {
+                // If running in browser, show install option and countdown
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('goButton').style.display = 'inline-block';
+                    document.getElementById('installButton').style.display = 'inline-block';
+                    updateCountdown();
+                }, 1000);
+            }
+        }
+        
+        // Start the app
+        init();
     </script>
 </body>
 </html>
