@@ -28,11 +28,14 @@ body {
 
 .launcher-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
-    max-width: 300px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
     flex-grow: 1;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .launcher-button {
@@ -53,6 +56,8 @@ body {
     min-height: 100px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .launcher-button:hover {
@@ -127,7 +132,7 @@ body {
 @media (max-width: 480px) {
     .launcher-grid {
         gap: 15px;
-        padding: 0 10px;
+        padding: 0 15px;
     }
     
     .launcher-button {

@@ -45,3 +45,11 @@ window.addEventListener('appinstalled', (evt) => {
 if (isPWA()) {
     document.getElementById('installPrompt').style.display = 'none';
 }
+
+// Add click handlers for disabled buttons
+document.querySelectorAll('.launcher-button.disabled').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Optional: Show a message that this feature is coming soon
+    });
+});
