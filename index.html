@@ -13,148 +13,9 @@
     
     <!-- Manifest and icon links -->
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="apple-touch-icon" href="icon.png">
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0b8457 0%, #0d9560 100%);
-            color: white;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .launcher-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-            flex-grow: 1;
-        }
-        
-        .launcher-button {
-            background-color: rgba(255, 255, 255, 0.95);
-            color: #0b8457;
-            border: none;
-            border-radius: 16px;
-            padding: 20px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .launcher-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            background-color: white;
-        }
-        
-        .launcher-button:active {
-            transform: translateY(0);
-        }
-        
-        .launcher-button.disabled {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: rgba(11, 132, 87, 0.5);
-            cursor: not-allowed;
-        }
-        
-        .launcher-button.disabled:hover {
-            transform: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .button-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-        
-        .button-text {
-            font-size: 14px;
-            line-height: 1.2;
-        }
-        
-        .install-prompt {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 20px;
-            text-align: center;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        
-        .install-button {
-            background-color: white;
-            color: #0b8457;
-            border: none;
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 10px auto;
-            display: block;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .install-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .install-button:active {
-            transform: translateY(0);
-        }
-        
-        .install-button.hidden {
-            display: none;
-        }
-        
-        @media (max-width: 480px) {
-            .launcher-grid {
-                gap: 15px;
-                padding: 0 10px;
-            }
-            
-            .launcher-button {
-                min-height: 80px;
-                padding: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="header">
@@ -164,13 +25,8 @@
     
     <div class="launcher-grid">
         <a href="https://activesefton.gladstonego.cloud/site-finder" class="launcher-button">
-            <div class="button-icon">🏃‍♂️</div>
-            <div class="button-text">Site Finder</div>
-        </a>
-        
-        <a href="https://gladstonego.cloud" class="launcher-button">
-            <div class="button-icon">🌐</div>
-            <div class="button-text">Gladstone Go</div>
+            <div class="button-icon">�️</div>
+            <div class="button-text">Memberships</div>
         </a>
         
         <a href="https://seftonbible.netlify.app" class="launcher-button">
@@ -182,16 +38,6 @@
             <div class="button-icon">🎓</div>
             <div class="button-text">Sefton Classes</div>
         </a>
-        
-        <div class="launcher-button disabled">
-            <div class="button-icon">📱</div>
-            <div class="button-text">Coming Soon</div>
-        </div>
-        
-        <div class="launcher-button disabled">
-            <div class="button-icon">🔧</div>
-            <div class="button-text">Coming Soon</div>
-        </div>
     </div>
     
     <div class="install-prompt" id="installPrompt">
@@ -202,62 +48,6 @@
         </div>
     </div>
     
-    <script>
-        let deferredPrompt;
-        
-        // Check if this is running as a PWA
-        function isPWA() {
-            return window.matchMedia('(display-mode: standalone)').matches || 
-                   window.navigator.standalone === true;
-        }
-        
-        // Listen for the beforeinstallprompt event
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            // Show the install button
-            document.getElementById('installButton').classList.remove('hidden');
-        });
-        
-        // Handle install button click
-        document.getElementById('installButton').addEventListener('click', async () => {
-            if (deferredPrompt) {
-                // Show the install prompt
-                deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`User response to the install prompt: ${outcome}`);
-                // Clear the deferredPrompt variable
-                deferredPrompt = null;
-                // Hide the install button
-                document.getElementById('installButton').classList.add('hidden');
-            } else {
-                // Fallback for browsers that don't support the install prompt
-                alert('To install this app:\n\n• On iOS Safari: Tap Share → Add to Home Screen\n• On Android Chrome: Tap Menu → Add to Home screen\n• On Desktop: Look for the install icon in the address bar');
-            }
-        });
-        
-        // Listen for the appinstalled event
-        window.addEventListener('appinstalled', (evt) => {
-            console.log('App was installed');
-            // Hide the install prompt
-            document.getElementById('installPrompt').style.display = 'none';
-        });
-        
-        // Hide install prompt if already installed as PWA
-        if (isPWA()) {
-            document.getElementById('installPrompt').style.display = 'none';
-        }
-        
-        // Add click handlers for disabled buttons
-        document.querySelectorAll('.launcher-button.disabled').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Optional: Show a message that this feature is coming soon
-            });
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

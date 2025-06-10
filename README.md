@@ -1,20 +1,18 @@
 # Active Sefton Launcher
 
-A Progressive Web App (PWA) launcher providing quick access to Active Sefton services and related tools.
+A Progressive Web App (PWA) launcher providing quick access to Active Sefton services.
 
 ## Features
 
-- **Site Finder**: Direct access to Active Sefton's site finder
-- **Gladstone Go**: Link to the main Gladstone Go platform
-- **Seft Bible**: Access to the Seft Bible resource
-- **3 Additional Slots**: Ready for future services
+- **Memberships**: Join up new members to Active Sefton centres
+- **Sefton Bible**: Staff resource and reference guide for procedures and protocols
+- **Sefton Classes**: Explore gym classes and pool times across all 6 Sefton leisure centres
 
 ## Current Links
 
-1. **Site Finder** → https://activesefton.gladstonego.cloud/site-finder
-2. **Gladstone Go** → https://gladstonego.cloud
-3. **Seft Bible** → https://seftbible.netlify.app
-4. **Coming Soon** (3 slots available for future features)
+1. **🏋️ Memberships** → https://activesefton.gladstonego.cloud/site-finder
+2. **📖 Sefton Bible** → https://seftonbible.netlify.app
+3. **🎓 Sefton Classes** → https://seftonclasses.netlify.app
 
 ## Installation
 
@@ -25,7 +23,9 @@ A Progressive Web App (PWA) launcher providing quick access to Active Sefton ser
 
 ## Files
 
-- `index.html` - Main launcher interface with 6-button grid
+- `index.html` - Main HTML structure
+- `styles.css` - Application styling and responsive design
+- `app.js` - JavaScript functionality and PWA install logic
 - `manifest.json` - PWA manifest for home screen installation
 - `icon.svg` - Placeholder icon (needs to be converted to PNG)
 
