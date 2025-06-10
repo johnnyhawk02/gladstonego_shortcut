@@ -5,13 +5,13 @@ A Progressive Web App (PWA) launcher providing quick access to Active Sefton ser
 ## Features
 
 - **Memberships**: Join up new members to Active Sefton centres
-- **Sefton Bible**: Staff resource and reference guide for procedures and protocols
+- **Reception Bible**: Staff resource and reference guide for procedures and protocols
 - **Sefton Classes**: Explore gym classes and pool times across all 6 Sefton leisure centres
 
 ## Current Links
 
 1. **🏋️ Memberships** → https://activesefton.gladstonego.cloud/site-finder
-2. **📖 Sefton Bible** → https://seftonbible.netlify.app
+2. **📖 Reception Bible** → https://seftonbible.netlify.app
 3. **🎓 Sefton Classes** → https://seftonclasses.netlify.app
 
 ## Installation
