@@ -115,6 +115,34 @@
             line-height: 1.4;
         }
         
+        .install-button {
+            background-color: white;
+            color: #0b8457;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px auto;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .install-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .install-button:active {
+            transform: translateY(0);
+        }
+        
+        .install-button.hidden {
+            display: none;
+        }
+        
         @media (max-width: 480px) {
             .launcher-grid {
                 gap: 15px;
@@ -168,15 +196,55 @@
     
     <div class="install-prompt" id="installPrompt">
         <strong>💡 Tip:</strong> Add this launcher to your home screen for quick access!<br>
-        Tap your browser's menu and select "Add to Home Screen"
+        <button class="install-button hidden" id="installButton">📱 Install App</button>
+        <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+            Or tap your browser's menu and select "Add to Home Screen"
+        </div>
     </div>
     
     <script>
+        let deferredPrompt;
+        
         // Check if this is running as a PWA
         function isPWA() {
             return window.matchMedia('(display-mode: standalone)').matches || 
                    window.navigator.standalone === true;
         }
+        
+        // Listen for the beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            // Show the install button
+            document.getElementById('installButton').classList.remove('hidden');
+        });
+        
+        // Handle install button click
+        document.getElementById('installButton').addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                // Clear the deferredPrompt variable
+                deferredPrompt = null;
+                // Hide the install button
+                document.getElementById('installButton').classList.add('hidden');
+            } else {
+                // Fallback for browsers that don't support the install prompt
+                alert('To install this app:\n\n• On iOS Safari: Tap Share → Add to Home Screen\n• On Android Chrome: Tap Menu → Add to Home screen\n• On Desktop: Look for the install icon in the address bar');
+            }
+        });
+        
+        // Listen for the appinstalled event
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('App was installed');
+            // Hide the install prompt
+            document.getElementById('installPrompt').style.display = 'none';
+        });
         
         // Hide install prompt if already installed as PWA
         if (isPWA()) {
