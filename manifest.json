@@ -4,17 +4,17 @@
   "description": "Quick access launcher for Active Sefton services",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#0b8457",
-  "background_color": "#0b8457",
+  "theme_color": "#1e5aa8",
+  "background_color": "#1e5aa8",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"

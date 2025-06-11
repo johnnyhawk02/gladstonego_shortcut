@@ -1,6 +1,6 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #0b8457 0%, #0d9560 100%);
+    background: linear-gradient(135deg, #1e5aa8 0%, #2867b5 100%);
     color: white;
     margin: 0;
     padding: 40px 20px;
@@ -15,6 +15,13 @@ body {
 .header {
     text-align: center;
     margin-bottom: 30px;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    margin-bottom: 12px;
+    filter: brightness(0) invert(1);
 }
 
 .logo {
@@ -40,10 +47,10 @@ body {
 .launcher-button {
     background: rgba(255, 255, 255, 0.95);
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92));
-    color: #0b8457;
+    color: #1e5aa8;
     border: none;
-    border-radius: 12px;
-    padding: 20px 24px;
+    border-radius: 16px;
+    padding: 24px;
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 0.2px;
@@ -53,7 +60,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: clamp(60px, 8vh, 80px);
+    aspect-ratio: 1;
+    min-height: 120px;
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
     box-sizing: border-box;
@@ -72,7 +80,7 @@ body {
 
 .launcher-button.disabled {
     background: rgba(255, 255, 255, 0.2);
-    color: rgba(11, 132, 87, 0.4);
+    color: rgba(30, 90, 168, 0.4);
     cursor: not-allowed;
     backdrop-filter: blur(5px);
 }
@@ -87,6 +95,13 @@ body {
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.2px;
+}
+
+.dev-note {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    font-style: italic;
 }
 
 .install-prompt {
@@ -110,7 +125,7 @@ body {
 
 .install-button {
     background: linear-gradient(145deg, #ffffff, rgba(255, 255, 255, 0.95));
-    color: #0b8457;
+    color: #1e5aa8;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -149,8 +164,8 @@ body {
     }
     
     .launcher-button {
-        height: clamp(50px, 7vh, 70px);
-        padding: clamp(12px, 2vh, 20px) 20px;
+        min-height: 100px;
+        padding: 20px;
         font-size: clamp(15px, 2.5vh, 18px);
     }
     
