@@ -1,22 +1,20 @@
 body {
-    font-f.logo {
-    font-size: clamp(28px, 5vw, 48px);
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: clamp(16px, 3vw, 24px);
-    opacity: 0.9;
-}ple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -a.launcher-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}m, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(135deg, #0b8457 0%, #0d9560 100%);
     color: white;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .header {
@@ -25,24 +23,23 @@ body {
 }
 
 .logo {
-    font-size: 40px;
+    font-size: clamp(32px, 6vw, 56px);
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .subtitle {
-    font-size: 22px;
+    font-size: clamp(18px, 4vw, 28px);
     opacity: 0.9;
 }
 
 .launcher-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    max-width: 100%;
+    gap: 10px;
+    max-width: 600px;
     width: 100%;
-    margin: 0 auto;
-    flex-grow: 1;
+    margin: 50px auto;
     padding: 0 20px;
     box-sizing: border-box;
 }
@@ -51,27 +48,26 @@ body {
     background-color: rgba(255, 255, 255, 0.95);
     color: #0b8457;
     border: none;
-    border-radius: 16px;
-    padding: 30px;
-    font-size: 22px;
-    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 140px;
+    height: 35px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     box-sizing: border-box;
 }
 
 .launcher-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     background-color: white;
 }
 
@@ -90,36 +86,37 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.button-icon {
-    font-size: 36px;
-    margin-bottom: 12px;
-}
-
 .button-text {
-    font-size: 20px;
+    font-size: inherit;
     line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .install-prompt {
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 30px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 15px;
     text-align: center;
-    font-size: 18px;
+    font-size: clamp(14px, 3vw, 18px);
     line-height: 1.4;
+    display: none;
+}
+
+.install-prompt.show {
+    display: block;
 }
 
 .install-button {
     background-color: white;
     color: #0b8457;
     border: none;
-    border-radius: 12px;
-    padding: 16px 32px;
-    font-size: 20px;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    margin: 15px auto;
+    margin: 10px auto;
     display: block;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -138,22 +135,39 @@ body {
     display: none;
 }
 
-@media (max-width: 480px) {
+/* Tablet-specific styles */
+@media (min-width: 768px) and (max-width: 1024px) {
     .launcher-grid {
-        gap: 20px;
-        padding: 0 20px;
+        gap: 25px;
+        padding: 0 40px;
     }
     
     .launcher-button {
         min-height: 120px;
-        padding: 25px;
+        padding: 40px 20px;
+        font-size: clamp(24px, 4vw, 36px);
     }
     
     .logo {
-        font-size: 36px;
+        font-size: clamp(36px, 6vw, 60px);
     }
     
     .subtitle {
-        font-size: 20px;
+        font-size: clamp(20px, 4vw, 30px);
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+    .launcher-grid {
+        gap: 8px;
+        padding: 0 15px;
+        margin: 30px auto;
+    }
+    
+    .launcher-button {
+        height: 45px;
+        padding: 10px 12px;
+        font-size: 13px;
     }
 }
