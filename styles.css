@@ -14,9 +14,9 @@ body {
 
 .launcher-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    max-width: 480px;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2vh, 20px);
+    max-width: 400px;
     width: 100%;
     margin: 0 auto;
 }
@@ -37,7 +37,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 64px;
+    height: clamp(60px, 8vh, 80px);
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
     box-sizing: border-box;
@@ -128,18 +128,18 @@ body {
     }
     
     .launcher-grid {
-        gap: 12px;
+        gap: clamp(10px, 1.5vh, 16px);
         max-width: 100%;
     }
     
     .launcher-button {
-        height: 56px;
-        padding: 16px 20px;
-        font-size: 16px;
+        height: clamp(50px, 7vh, 70px);
+        padding: clamp(12px, 2vh, 20px) 20px;
+        font-size: clamp(15px, 2.5vh, 18px);
     }
     
     .button-text {
-        font-size: 16px;
+        font-size: clamp(15px, 2.5vh, 18px);
     }
     
     .install-prompt {
