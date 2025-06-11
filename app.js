@@ -12,7 +12,8 @@ window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     // Stash the event so it can be triggered later
     deferredPrompt = e;
-    // Show the install button
+    // Show the install prompt and button
+    document.getElementById('installPrompt').classList.add('show');
     document.getElementById('installButton').classList.remove('hidden');
 });
 
@@ -26,8 +27,8 @@ document.getElementById('installButton').addEventListener('click', async () => {
         console.log(`User response to the install prompt: ${outcome}`);
         // Clear the deferredPrompt variable
         deferredPrompt = null;
-        // Hide the install button
-        document.getElementById('installButton').classList.add('hidden');
+        // Hide the entire install prompt
+        document.getElementById('installPrompt').classList.remove('show');
     } else {
         // Fallback for browsers that don't support the install prompt
         alert('To install this app:\n\n• On iOS Safari: Tap Share → Add to Home Screen\n• On Android Chrome: Tap Menu → Add to Home screen\n• On Desktop: Look for the install icon in the address bar');
@@ -38,12 +39,12 @@ document.getElementById('installButton').addEventListener('click', async () => {
 window.addEventListener('appinstalled', (evt) => {
     console.log('App was installed');
     // Hide the install prompt
-    document.getElementById('installPrompt').style.display = 'none';
+    document.getElementById('installPrompt').classList.remove('show');
 });
 
 // Hide install prompt if already installed as PWA
 if (isPWA()) {
-    document.getElementById('installPrompt').style.display = 'none';
+    document.getElementById('installPrompt').classList.remove('show');
 }
 
 // Add click handlers for disabled buttons
