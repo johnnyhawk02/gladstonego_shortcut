@@ -18,6 +18,11 @@
     <link rel="apple-touch-icon" href="icon.png">
 </head>
 <body>
+    <div class="header">
+        <div class="logo">Active Sefton</div>
+        <div class="subtitle">Quick Access Launcher</div>
+    </div>
+    
     <div class="launcher-grid">
         <a href="https://activesefton.gladstonego.cloud/site-finder" class="launcher-button">
             <div class="button-text">Memberships</div>
@@ -45,7 +50,11 @@
     </div>
     
     <div class="install-prompt" id="installPrompt">
+        <strong>💡 Tip:</strong> Add this launcher to your home screen for quick access!<br>
         <button class="install-button hidden" id="installButton">📱 Install App</button>
+        <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
+            Or tap your browser's menu and select "Add to Home Screen"
+        </div>
     </div>
     
     <script src="app.js"></script>

@@ -12,11 +12,27 @@ body {
     align-items: center;
 }
 
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
 .launcher-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: clamp(12px, 2vh, 20px);
-    max-width: 400px;
+    max-width: 480px;
     width: 100%;
     margin: 0 auto;
 }
@@ -81,7 +97,7 @@ body {
     text-align: center;
     font-size: 14px;
     line-height: 1.4;
-    display: none;
+    display: block;
     max-width: 480px;
     width: 100%;
     backdrop-filter: blur(10px);
