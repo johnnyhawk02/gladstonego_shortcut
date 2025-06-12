@@ -1,6 +1,6 @@
 {
-  "name": "Active Sefton Launcher",
-  "short_name": "Active Sefton",
+  "name": "Launcher",
+  "short_name": "Launcher",
   "description": "Quick access launcher for Active Sefton services",
   "start_url": "/",
   "display": "standalone",
